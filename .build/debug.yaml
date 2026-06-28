@@ -1,0 +1,112 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "ForbiddenIslandRules-arm64-apple-macosx-debug.module": ["<ForbiddenIslandRules-arm64-apple-macosx-debug.module>"]
+  "ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.module": ["<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.module>"]
+  "ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test": ["<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test>"]
+  "ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module": ["<ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<ForbiddenIslandRules-arm64-apple-macosx-debug.module>"]
+  "test": ["<ForbiddenIslandRules-arm64-apple-macosx-debug.module>","<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test>","<ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module>"]
+default: "main"
+nodes:
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/ForbiddenIslandRules.swift","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/GameViewModel.swift"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/sources"]
+    description: "Write auxiliary file /Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/sources"
+
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.derived/runner.swift"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/sources"]
+    description: "Write auxiliary file /Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/sources"
+
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: []
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.derived/runner.swift"]
+
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/ForbiddenIslandRules.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/GameViewModel.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swift.o"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.product/Objects.LinkFileList"
+
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/ForbiddenIslandRulesTests.swift","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/GameViewModelTests.swift"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/sources"]
+    description: "Write auxiliary file /Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/sources"
+
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<ForbiddenIslandRules-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/ForbiddenIslandRules.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/GameViewModel.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRules.swiftmodule"]
+    outputs: ["<ForbiddenIslandRules-arm64-apple-macosx-debug.module>"]
+
+  "<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesPackageTests.swiftmodule"]
+    outputs: ["<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.module>"]
+
+  "<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test>":
+    tool: phony
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.xctest/Contents/MacOS/ForbiddenIslandRulesPackageTests"]
+    outputs: ["<ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test>"]
+
+  "<ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesTests.swiftmodule"]
+    outputs: ["<ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module>"]
+
+  "C.ForbiddenIslandRules-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/ForbiddenIslandRules.swift","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/GameViewModel.swift","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/sources"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/ForbiddenIslandRules.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/GameViewModel.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRules.swiftmodule"]
+    description: "Compiling Swift Module 'ForbiddenIslandRules' (2 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","ForbiddenIslandRules","-emit-dependencies","-emit-module","-emit-module-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRules.swiftmodule","-output-file-map","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/sources","-I","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/include/ForbiddenIslandRules-Swift.h","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","forbiddenislandipad"]
+
+  "C.ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.derived/runner.swift","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesTests.swiftmodule","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/sources"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'ForbiddenIslandRulesPackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","ForbiddenIslandRulesPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesPackageTests.swiftmodule","-output-file-map","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/sources","-I","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/include/ForbiddenIslandRulesPackageTests-Swift.h","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","forbiddenislandipad"]
+
+  "C.ForbiddenIslandRulesPackageTests-arm64-apple-macosx-debug.test":
+    tool: shell
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/ForbiddenIslandRules.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRules.build/GameViewModel.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.xctest/Contents/MacOS/ForbiddenIslandRulesPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.xctest/Contents/MacOS/ForbiddenIslandRulesPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug","-o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.xctest/Contents/MacOS/ForbiddenIslandRulesPackageTests","-module-name","ForbiddenIslandRulesPackageTests","-Xlinker","-no_warn_duplicate_libraries","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx14.0","-Xlinker","-add_ast_path","-Xlinker","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRules.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesPackageTests.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesTests.swiftmodule","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.ForbiddenIslandRulesTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/ForbiddenIslandRulesTests.swift","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/GameViewModelTests.swift","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRules.swiftmodule","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/sources"]
+    outputs: ["/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swift.o","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesTests.swiftmodule"]
+    description: "Compiling Swift Module 'ForbiddenIslandRulesTests' (2 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","ForbiddenIslandRulesTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules/ForbiddenIslandRulesTests.swiftmodule","-output-file-map","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/sources","-I","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","forbiddenislandipad"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/","/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/","/Users/scottmiller/ForbiddenIslandIpad/Package.swift","/Users/scottmiller/ForbiddenIslandIpad/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

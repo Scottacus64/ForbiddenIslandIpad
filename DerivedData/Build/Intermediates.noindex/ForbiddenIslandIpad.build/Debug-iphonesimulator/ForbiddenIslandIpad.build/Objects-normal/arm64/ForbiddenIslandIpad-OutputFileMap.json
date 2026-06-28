@@ -1,0 +1,119 @@
+{
+  "" : {
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.dia",
+    "emit-module-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-emit-module.dia",
+    "pch" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.swiftdeps"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/ContentView.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/ForbiddenIslandIpadApp.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/ForbiddenIslandRules.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/GameViewModel.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/BundleImage.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/CardViews.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameStatusPanel.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameView.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/IslandBoardView.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView~partial.swiftmodule"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/RulesReferenceView.swift" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.dia",
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.o",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.swiftdeps",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/DerivedData/Build/Intermediates.noindex/ForbiddenIslandIpad.build/Debug-iphonesimulator/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView~partial.swiftmodule"
+  }
+}

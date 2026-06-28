@@ -8,12 +8,18 @@
 
 /* Begin PBXFileReference section */
 		5F4463BA2FF01EAC00A5061B /* ForbiddenIslandIpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForbiddenIslandIpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForbiddenIslandIpadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5F4463BC2FF01EAC00A5061B /* ForbiddenIslandIpad */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ForbiddenIslandIpad;
+			sourceTree = "<group>";
+		};
+		C1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ForbiddenIslandIpadUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				5F4463BC2FF01EAC00A5061B /* ForbiddenIslandIpad */,
+				C1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests */,
 				5F4463BB2FF01EAC00A5061B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				5F4463BA2FF01EAC00A5061B /* ForbiddenIslandIpad.app */,
+				A1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +78,27 @@
 			productReference = 5F4463BA2FF01EAC00A5061B /* ForbiddenIslandIpad.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1B2C3D4E5F60718293A4B5C6 /* Build configuration list for PBXNativeTarget "ForbiddenIslandIpadUITests" */;
+			buildPhases = (
+				E1B2C3D4E5F60718293A4B5C6 /* Sources */,
+				01B2C3D4E5F60718293A4B5C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests */,
+			);
+			name = ForbiddenIslandIpadUITests;
+			packageProductDependencies = (
+			);
+			productName = ForbiddenIslandIpadUITests;
+			productReference = A1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +110,9 @@
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					5F4463B92FF01EAC00A5061B = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					B1B2C3D4E5F60718293A4B5C6 = {
 						CreatedOnToolsVersion = 26.5;
 					};
 				};
@@ -100,11 +132,19 @@
 			projectRoot = "";
 			targets = (
 				5F4463B92FF01EAC00A5061B /* ForbiddenIslandIpad */,
+				B1B2C3D4E5F60718293A4B5C6 /* ForbiddenIslandIpadUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		01B2C3D4E5F60718293A4B5C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F4463B82FF01EAC00A5061B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,9 +162,60 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1B2C3D4E5F60718293A4B5C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2B2C3D4E5F60718293A4B5C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/Frameworks",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.ForbiddenIslandIpadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ForbiddenIslandIpad;
+			};
+			name = Debug;
+		};
+		3B2C3D4E5F60718293A4B5C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/Frameworks",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.ForbiddenIslandIpadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ForbiddenIslandIpad;
+			};
+			name = Release;
+		};
 		5F4463C32FF01EAD00A5061B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -323,6 +414,15 @@
 			buildConfigurations = (
 				5F4463C62FF01EAD00A5061B /* Debug */,
 				5F4463C72FF01EAD00A5061B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1B2C3D4E5F60718293A4B5C6 /* Build configuration list for PBXNativeTarget "ForbiddenIslandIpadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B2C3D4E5F60718293A4B5C6 /* Debug */,
+				3B2C3D4E5F60718293A4B5C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

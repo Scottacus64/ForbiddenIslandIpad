@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/primary.swiftdeps"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/ForbiddenIslandRulesTests.swift": {
+    "dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.d",
+    "object": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swift.o",
+    "swiftmodule": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.swiftdeps",
+    "diagnostics": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/ForbiddenIslandRulesTests.dia"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpadTests/RulesTests/GameViewModelTests.swift": {
+    "dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.d",
+    "object": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swift.o",
+    "swiftmodule": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.swiftdeps",
+    "diagnostics": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesTests.build/GameViewModelTests.dia"
+  }
+}

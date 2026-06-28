@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/primary.swiftdeps"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.d",
+    "object": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/scottmiller/ForbiddenIslandIpad/.build/arm64-apple-macosx/debug/ForbiddenIslandRulesPackageTests.build/runner.dia"
+  }
+}
