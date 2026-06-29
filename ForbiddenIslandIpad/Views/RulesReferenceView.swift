@@ -2,36 +2,74 @@ import SwiftUI
 
 struct RulesReferenceView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var currentPage = 0
 
-    private let pageNames = (1...8).map { "R\($0)" }
-    private let columns = [
-        GridItem(.adaptive(minimum: 280), spacing: 16)
+    private let pages: [(image: String, title: String)] = [
+        ("R1", "Overview"),
+        ("R2", "Setup"),
+        ("R3", "Player Actions"),
+        ("R4", "Special Powers"),
+        ("R5", "Treasure Cards"),
+        ("R6", "Flooding"),
+        ("R7", "Winning and Losing"),
+        ("R8", "Reference")
     ]
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(pageNames, id: \.self) { pageName in
-                        VStack(alignment: .leading, spacing: 10) {
-                            BundleImage(name: pageName)
-                                .aspectRatio(0.75, contentMode: .fit)
-                                .frame(maxWidth: .infinity)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .strokeBorder(.white.opacity(0.14), lineWidth: 1)
-                                }
+            GeometryReader { proxy in
+                VStack(spacing: 16) {
+                    TabView(selection: $currentPage) {
+                        ForEach(pages.indices, id: \.self) { index in
+                            let page = pages[index]
+                            VStack(spacing: 12) {
+                                BundleImage(name: page.image)
+                                    .scaledToFit()
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .strokeBorder(.white.opacity(0.14), lineWidth: 1)
+                                    }
 
-                            Text(pageLabel(for: pageName))
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                Text(page.title)
+                                    .font(.headline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 16)
+                            .tag(index)
                         }
-                        .padding(10)
-                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                    HStack(spacing: 12) {
+                        Button {
+                            currentPage = max(0, currentPage - 1)
+                        } label: {
+                            Label("Previous", systemImage: "chevron.left")
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(currentPage == 0)
+
+                        Text("\(currentPage + 1) / \(pages.count)")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 72)
+
+                        Button {
+                            currentPage = min(pages.count - 1, currentPage + 1)
+                        } label: {
+                            Label("Next", systemImage: "chevron.right")
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(currentPage >= pages.count - 1)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, max(0, proxy.safeAreaInsets.bottom))
                 }
-                .padding(16)
+                .padding(.top, 16)
+                .padding(.horizontal, 16)
             }
             .background(Color(red: 0.02, green: 0.09, blue: 0.16))
             .navigationTitle("Rules")
@@ -42,29 +80,6 @@ struct RulesReferenceView: View {
                     }
                 }
             }
-        }
-    }
-
-    private func pageLabel(for pageName: String) -> String {
-        switch pageName {
-        case "R1":
-            return "Overview"
-        case "R2":
-            return "Setup"
-        case "R3":
-            return "Player Actions"
-        case "R4":
-            return "Special Powers"
-        case "R5":
-            return "Treasure Cards"
-        case "R6":
-            return "Flooding"
-        case "R7":
-            return "Winning and Losing"
-        case "R8":
-            return "Reference"
-        default:
-            return pageName
         }
     }
 }

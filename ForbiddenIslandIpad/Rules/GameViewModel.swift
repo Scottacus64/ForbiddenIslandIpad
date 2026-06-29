@@ -492,6 +492,25 @@ public final class GameViewModel: ObservableObject {
             phase = .selectingSandbagTarget(playerID: playerID, cardIndex: cardIndex, targets: targets)
             return true
         case .helicopter:
+            if canWinWithHelicopterLift() {
+                guard let foolsLanding = foolsLandingLocation(),
+                      let passengerIDs = allPlayersOnFoolsLandingIDs(),
+                      game.playHelicopter(
+                        playerID: playerID,
+                        cardIndex: cardIndex,
+                        movingPlayerIDs: passengerIDs,
+                        destination: foolsLanding
+                      ) else {
+                    return false
+                }
+
+                log("Helicopter lifted the team from Fools' Landing.", symbol: "airplane")
+                selectedHandLimitCard = nil
+                suspendedPhases.removeAll()
+                phase = .gameOver(.won)
+                return true
+            }
+
             let sourceLocations = helicopterSourceLocations()
             guard !sourceLocations.isEmpty else {
                 return false
@@ -938,7 +957,13 @@ public final class GameViewModel: ObservableObject {
 
     private func completeReactionOrAdvance() {
         if let resumedPhase = suspendedPhases.popLast() {
-            phase = resumedPhase
+            if case .discardingHandLimit(let playerID, let continuation) = resumedPhase,
+               let player = game.players.first(where: { $0.id == playerID }),
+               player.hand.count <= GameState.maximumHandSize {
+                resumeAfterHandLimit(continuation)
+            } else {
+                phase = resumedPhase
+            }
         } else {
             advanceAfterAction()
         }
@@ -1144,6 +1169,24 @@ public final class GameViewModel: ObservableObject {
             .filter { $0.location == location }
             .map(\.id)
             .sorted()
+    }
+
+    private func foolsLandingLocation() -> Int? {
+        game.tilesByLocation.first(where: { $0.value.kind == .foolsLanding })?.key
+    }
+
+    private func allPlayersOnFoolsLandingIDs() -> [Int]? {
+        guard let foolsLanding = foolsLandingLocation(),
+              game.collectedTreasures.count == Treasure.allCases.count,
+              game.players.allSatisfy({ $0.location == foolsLanding }) else {
+            return nil
+        }
+
+        return game.players.map(\.id)
+    }
+
+    private func canWinWithHelicopterLift() -> Bool {
+        allPlayersOnFoolsLandingIDs() != nil
     }
 
     private func treasureReceiverIDs(for player: Player) -> [Int] {

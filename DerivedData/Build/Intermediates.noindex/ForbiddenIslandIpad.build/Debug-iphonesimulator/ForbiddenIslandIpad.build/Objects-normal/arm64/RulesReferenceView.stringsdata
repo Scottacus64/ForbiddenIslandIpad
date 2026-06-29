@@ -7,7 +7,31 @@
         "key": "Rules",
         "location": {
           "startingColumn": 30,
-          "startingLine": 37
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld / %lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 63
         }
       },
       {
@@ -15,7 +39,7 @@
         "key": "Close",
         "location": {
           "startingColumn": 28,
-          "startingLine": 40
+          "startingLine": 78
         }
       }
     ]

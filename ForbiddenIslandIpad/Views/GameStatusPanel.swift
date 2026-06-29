@@ -18,6 +18,14 @@ struct GameStatusPanel: View {
             .buttonStyle(.bordered)
             .accessibilityIdentifier("rules.button")
 
+            Button {
+                viewModel.resetGame()
+            } label: {
+                Label("New Game", systemImage: "arrow.counterclockwise")
+            }
+            .buttonStyle(.bordered)
+            .accessibilityIdentifier("newGame.button")
+
             VStack(alignment: .leading, spacing: 8) {
                 Label(phaseTitle, systemImage: "flag.checkered")
                 Label("Water Level \(viewModel.game.waterLevel)", systemImage: "water.waves")
@@ -63,12 +71,6 @@ struct GameStatusPanel: View {
             eventLogSection
 
             Divider()
-
-            Button("New Game") {
-                viewModel.resetGame()
-            }
-            .buttonStyle(.bordered)
-            .accessibilityIdentifier("newGame.button")
 
             Spacer(minLength: 0)
         }

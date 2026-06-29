@@ -7,7 +7,7 @@
         "key": "%lld actions / %lld cards",
         "location": {
           "startingColumn": 30,
-          "startingLine": 119
+          "startingLine": 115
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "%lld actions",
         "location": {
           "startingColumn": 30,
-          "startingLine": 123
+          "startingLine": 119
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Active",
         "location": {
           "startingColumn": 34,
-          "startingLine": 106
+          "startingLine": 102
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "No treasure cards",
         "location": {
           "startingColumn": 26,
-          "startingLine": 133
+          "startingLine": 129
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Discards",
         "location": {
           "startingColumn": 18,
-          "startingLine": 220
+          "startingLine": 216
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "Deck",
         "location": {
           "startingColumn": 18,
-          "startingLine": 274
+          "startingLine": 270
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "%lld",
         "location": {
           "startingColumn": 22,
-          "startingLine": 266
+          "startingLine": 262
         }
       }
     ]

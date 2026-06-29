@@ -17,12 +17,12 @@ struct GameView: View {
                 if landscape {
                     landscapeLayout(metrics: metrics, height: proxy.size.height)
                 } else {
-                    portraitLayout(metrics: metrics)
+                    portraitLayout(metrics: metrics, size: proxy.size)
                 }
             }
             .background(Color(red: 0.02, green: 0.09, blue: 0.16))
         }
-        .sheet(isPresented: $showingRulesReference) {
+        .fullScreenCover(isPresented: $showingRulesReference) {
             RulesReferenceView()
         }
     }
@@ -55,7 +55,7 @@ struct GameView: View {
     }
 
     @ViewBuilder
-    private func portraitLayout(metrics: GameLayoutMetrics) -> some View {
+    private func portraitLayout(metrics: GameLayoutMetrics, size: CGSize) -> some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 16) {
                 IslandBoardView(
@@ -68,14 +68,14 @@ struct GameView: View {
                 .frame(width: metrics.boardSide, height: metrics.boardSide)
                 .frame(maxWidth: .infinity)
 
-                PlayerHandsView(viewModel: viewModel)
-                    .frame(maxWidth: .infinity)
-
                 GameStatusPanel(
                     viewModel: viewModel,
                     onShowRules: showRulesReference
                 )
                 .frame(maxWidth: .infinity)
+
+                PlayerHandsView(viewModel: viewModel)
+                    .frame(maxWidth: .infinity)
             }
             .padding(metrics.boardPadding)
             .frame(maxWidth: .infinity)
@@ -98,17 +98,22 @@ struct GameView: View {
                 leftPaneWidth: leftPaneWidth,
                 statusWidth: statusWidth,
                 boardPadding: boardPadding,
-                boardSide: boardSide
+                boardSide: boardSide,
+                rightPaneWidth: 0
             )
         } else {
             let usableWidth = size.width - (boardPadding * 2)
-            let boardSide = max(280, min(usableWidth, size.height * 0.68))
+            let boardSide = max(
+                280,
+                min(usableWidth, size.height * 0.58)
+            )
 
             return GameLayoutMetrics(
                 leftPaneWidth: size.width,
                 statusWidth: size.width,
                 boardPadding: boardPadding,
-                boardSide: boardSide
+                boardSide: boardSide,
+                rightPaneWidth: 0
             )
         }
     }
@@ -200,4 +205,5 @@ private struct GameLayoutMetrics {
     let statusWidth: CGFloat
     let boardPadding: CGFloat
     let boardSide: CGFloat
+    let rightPaneWidth: CGFloat
 }

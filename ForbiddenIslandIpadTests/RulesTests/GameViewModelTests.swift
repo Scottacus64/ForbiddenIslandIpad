@@ -169,7 +169,11 @@ final class GameViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.selectedHandLimitCard)
         XCTAssertEqual(viewModel.game.players[0].hand.count, GameState.maximumHandSize)
         XCTAssertEqual(viewModel.game.treasureDiscard, [.sandbag])
-        XCTAssertEqual(viewModel.phase, .flooding)
+        if case .flooding = viewModel.phase {
+            // expected
+        } else {
+            XCTFail("Expected flooding phase after discarding to hand limit")
+        }
     }
 
     func testHandLimitReactionCardCanBePlayedInsteadOfDiscarded() {
@@ -194,7 +198,11 @@ final class GameViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.playSandbag(at: 8))
         XCTAssertEqual(viewModel.game.players[0].hand.count, GameState.maximumHandSize)
         XCTAssertEqual(viewModel.game.treasureDiscard, [.sandbag])
-        XCTAssertEqual(viewModel.phase, .flooding)
+        if case .flooding = viewModel.phase {
+            // expected
+        } else {
+            XCTFail("Expected flooding phase after playing the reaction card")
+        }
     }
 
     func testWatersRisePausesUntilResolvedThenContinuesDrawCount() {
@@ -673,6 +681,22 @@ final class GameViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.game.players[3].location, 14)
         XCTAssertEqual(viewModel.game.players[0].actionsRemaining, 3)
         XCTAssertEqual(viewModel.game.treasureDiscard, [.helicopter])
+    }
+
+    func testHelicopterLiftWinsImmediatelyWhenEveryoneIsOnFoolsLanding() {
+        var game = fixedGame()
+        game.collectedTreasures = Set(Treasure.allCases)
+        game.players = [
+            Player(id: 0, role: .pilot, location: 9, hand: [.helicopter]),
+            Player(id: 1, role: .engineer, location: 9),
+            Player(id: 2, role: .diver, location: 9),
+            Player(id: 3, role: .messenger, location: 9)
+        ]
+        let viewModel = GameViewModel(game: game, phase: .playerAction(playerID: 0))
+
+        XCTAssertTrue(viewModel.playTreasureCard(playerID: 0, cardIndex: 0))
+        XCTAssertEqual(viewModel.game.treasureDiscard, [.helicopter])
+        XCTAssertEqual(viewModel.phase, .gameOver(.won))
     }
 
     func testHelicopterPassengerSelectionRequiresAtLeastOnePassenger() {
