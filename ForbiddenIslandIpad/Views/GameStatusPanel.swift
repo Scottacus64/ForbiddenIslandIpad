@@ -3,8 +3,49 @@ import SwiftUI
 struct GameStatusPanel: View {
     @ObservedObject var viewModel: GameViewModel
     let onShowRules: () -> Void
+    let isCompactPortrait: Bool
+    let isLandscapeLayout: Bool
+    @State private var showsDetails = false
+
+    init(
+        viewModel: GameViewModel,
+        onShowRules: @escaping () -> Void,
+        isCompactPortrait: Bool = false,
+        isLandscapeLayout: Bool = false
+    ) {
+        self._viewModel = ObservedObject(wrappedValue: viewModel)
+        self.onShowRules = onShowRules
+        self.isCompactPortrait = isCompactPortrait
+        self.isLandscapeLayout = isLandscapeLayout
+    }
 
     var body: some View {
+        ScrollView(.vertical, showsIndicators: true) {
+            Group {
+                if isCompactPortrait {
+                    compactPortraitBody
+                } else {
+                    fullSidebarBody
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    private var fullSidebarBody: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            if isLandscapeLayout {
+                landscapeBottomSections
+            } else {
+                verticalSidebarSections
+            }
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.regularMaterial)
+    }
+
+    private var verticalSidebarSections: some View {
         VStack(alignment: .leading, spacing: 18) {
             BundleImage(name: "fiLogo")
                 .frame(height: 86)
@@ -26,39 +67,13 @@ struct GameStatusPanel: View {
             .buttonStyle(.bordered)
             .accessibilityIdentifier("newGame.button")
 
-            VStack(alignment: .leading, spacing: 8) {
-                Label(phaseTitle, systemImage: "flag.checkered")
-                Label("Water Level \(viewModel.game.waterLevel)", systemImage: "water.waves")
-                if let activePlayer = viewModel.activePlayer {
-                    Label(activePlayer.role.name, systemImage: "person.fill")
-                    Label(viewModel.game.tileName(at: activePlayer.location), systemImage: "mappin.and.ellipse")
-                    Label("\(activePlayer.actionsRemaining) Actions", systemImage: "circle.grid.3x3.fill")
-                }
-            }
-            .font(.headline)
+            statusSummary
 
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Treasures")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-
-                HStack(spacing: 10) {
-                    ForEach(Treasure.allCases, id: \.self) { treasure in
-                        BundleImage(name: "TR\(treasure.rawValue)")
-                            .opacity(viewModel.game.collectedTreasures.contains(treasure) ? 1 : 0.35)
-                            .frame(width: 44, height: 44)
-                    }
-                }
-            }
+            treasureOverview
 
             Divider()
 
-            VStack(alignment: .leading, spacing: 8) {
-                Label("Treasure Deck", systemImage: "rectangle.stack.fill")
-                Label("\(viewModel.game.floodDeck.count) Flood", systemImage: "drop.fill")
-                Label("\(viewModel.game.floodDiscard.count) Flood Discard", systemImage: "tray.fill")
-            }
-            .font(.subheadline)
+            deckSummary
 
             DeckDiscardView(viewModel: viewModel)
 
@@ -74,9 +89,150 @@ struct GameStatusPanel: View {
 
             Spacer(minLength: 0)
         }
+    }
+
+    private var landscapeBottomSections: some View {
+        HStack(alignment: .top, spacing: 12) {
+            landscapeBrandColumn
+            landscapeStatusColumn
+            landscapeDeckColumn
+            landscapePhaseColumn
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var landscapeBrandColumn: some View {
+        VStack(alignment: .center, spacing: 10) {
+            BundleImage(name: "fiLogo")
+                .frame(width: 122, height: 80, alignment: .center)
+
+            HStack(spacing: 10) {
+                Button {
+                    onShowRules()
+                } label: {
+                    Label("Rules", systemImage: "book.fill")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("rules.button")
+
+                Button {
+                    viewModel.resetGame()
+                } label: {
+                    Label("New Game", systemImage: "arrow.counterclockwise")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("newGame.button")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private var landscapeStatusColumn: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            statusSummary
+            treasureOverview
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var landscapeDeckColumn: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            deckSummary
+            DeckDiscardView(viewModel: viewModel)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var landscapePhaseColumn: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            phaseControls
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
+
+    private var compactPortraitBody: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 10) {
+                Button {
+                    onShowRules()
+                } label: {
+                    Label("Rules", systemImage: "book.fill")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("rules.button")
+
+                Button {
+                    viewModel.resetGame()
+                } label: {
+                    Label("New Game", systemImage: "arrow.counterclockwise")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("newGame.button")
+            }
+
+            statusSummary
+
+            phaseControls
+
+            DisclosureGroup(isExpanded: $showsDetails) {
+                VStack(alignment: .leading, spacing: 12) {
+                    treasureOverview
+
+                    Divider()
+
+                    deckSummary
+
+                    DeckDiscardView(viewModel: viewModel)
+
+                    Divider()
+
+                    eventLogSection
+                }
+                .padding(.top, 8)
+            } label: {
+                Label("More", systemImage: "chevron.down")
+                    .font(.headline)
+            }
+        }
         .padding(18)
-        .frame(minWidth: 260, maxWidth: 320)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(.regularMaterial)
+    }
+
+    private var statusSummary: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label(phaseTitle, systemImage: "flag.checkered")
+            if let activePlayer = viewModel.activePlayer {
+                Label(activePlayer.role.name, systemImage: "person.fill")
+                Label("\(activePlayer.actionsRemaining) Actions", systemImage: "circle.grid.3x3.fill")
+            }
+        }
+        .font(.headline)
+    }
+
+    private var treasureOverview: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Treasures Collected")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+
+            HStack(spacing: 10) {
+                ForEach(Treasure.allCases, id: \.self) { treasure in
+                    BundleImage(name: "TR\(treasure.rawValue)")
+                        .opacity(viewModel.game.collectedTreasures.contains(treasure) ? 1 : 0.35)
+                        .frame(width: 44, height: 44)
+                }
+            }
+        }
+    }
+
+    private var deckSummary: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label("Treasure Deck", systemImage: "rectangle.stack.fill")
+            Label("\(viewModel.game.floodDeck.count) Flood", systemImage: "drop.fill")
+            Label("\(viewModel.game.floodDiscard.count) Flood Discard", systemImage: "tray.fill")
+        }
+        .font(.subheadline)
     }
 
     @ViewBuilder
@@ -103,12 +259,21 @@ struct GameStatusPanel: View {
                 Text("Difficulty")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                ForEach(difficulties, id: \.level) { difficulty in
-                    Button(difficulty.name) {
-                        _ = viewModel.chooseDifficulty(waterLevel: difficulty.level)
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 8, alignment: .leading),
+                        GridItem(.flexible(), spacing: 8, alignment: .leading)
+                    ],
+                    alignment: .leading,
+                    spacing: 8
+                ) {
+                    ForEach(difficulties, id: \.level) { difficulty in
+                        Button(difficulty.name) {
+                            _ = viewModel.chooseDifficulty(waterLevel: difficulty.level)
+                        }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("difficulty.\(difficulty.level)")
                     }
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("difficulty.\(difficulty.level)")
                 }
             }
 
@@ -123,45 +288,68 @@ struct GameStatusPanel: View {
 
         case .playerAction:
             VStack(alignment: .leading, spacing: 10) {
-                Button("Move") {
-                    _ = viewModel.selectAction(.move)
-                }
-                .buttonStyle(.bordered)
-                .accessibilityIdentifier("action.move")
+                let specialActionTitle = viewModel.activePlayer?.role == .pilot
+                    ? "Fly"
+                    : viewModel.activePlayer?.role == .navigator
+                        ? "Move other player"
+                        : "Special"
 
-                Button("Shore Up") {
-                    _ = viewModel.selectAction(.shoreUp)
-                }
-                .buttonStyle(.bordered)
-                .accessibilityIdentifier("action.shoreUp")
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 8, alignment: .leading),
+                        GridItem(.flexible(), spacing: 8, alignment: .leading)
+                    ],
+                    alignment: .leading,
+                    spacing: 8
+                ) {
+                    phaseActionButton(
+                        "Move",
+                        accessibilityIdentifier: "action.move"
+                    ) {
+                        _ = viewModel.selectAction(.move)
+                    }
 
-                Button("Collect Treasure") {
-                    _ = viewModel.selectAction(.collectTreasure)
-                }
-                .buttonStyle(.bordered)
-                .disabled(!viewModel.canCollectTreasure)
-                .accessibilityIdentifier("action.collectTreasure")
+                    phaseActionButton(
+                        "Shore Up",
+                        accessibilityIdentifier: "action.shoreUp"
+                    ) {
+                        _ = viewModel.selectAction(.shoreUp)
+                    }
 
-                Button("Give Treasure") {
-                    _ = viewModel.selectAction(.giveTreasure)
-                }
-                .buttonStyle(.bordered)
-                .disabled(!viewModel.canGiveTreasure)
-                .accessibilityIdentifier("action.giveTreasure")
+                    phaseActionButton(
+                        "Collect Treasure",
+                        accessibilityIdentifier: "action.collectTreasure",
+                        isDisabled: !viewModel.canCollectTreasure
+                    ) {
+                        _ = viewModel.selectAction(.collectTreasure)
+                    }
 
-                Button("Special") {
-                    _ = viewModel.selectAction(.special)
-                }
-                .buttonStyle(.bordered)
-                .disabled(!viewModel.canUseSpecialAction)
-                .accessibilityIdentifier("action.special")
+                    phaseActionButton(
+                        "Give Treasure",
+                        accessibilityIdentifier: "action.giveTreasure",
+                        isDisabled: !viewModel.canGiveTreasure
+                    ) {
+                        _ = viewModel.selectAction(.giveTreasure)
+                    }
 
-                Button("End Turn") {
-                    _ = viewModel.selectAction(.endTurn)
+                    phaseActionButton(
+                        specialActionTitle,
+                        accessibilityIdentifier: "action.special",
+                        isDisabled: !viewModel.canUseSpecialAction
+                    ) {
+                        _ = viewModel.selectAction(.special)
+                    }
+
+                    phaseActionButton(
+                        "End Turn",
+                        accessibilityIdentifier: "action.endTurn"
+                    ) {
+                        _ = viewModel.selectAction(.endTurn)
+                    }
                 }
-                .buttonStyle(.bordered)
-                .accessibilityIdentifier("action.endTurn")
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
         case .selectingMove(_, let targets):
             selectionBlock(
@@ -447,6 +635,26 @@ struct GameStatusPanel: View {
             return "No legal targets."
         }
         return "Highlighted tiles: " + targets.map { viewModel.game.tileName(at: $0) }.joined(separator: ", ")
+    }
+
+    private func phaseActionButton(
+        _ title: String,
+        accessibilityIdentifier: String,
+        isDisabled: Bool = false,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(.subheadline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(minHeight: 42, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .buttonStyle(.bordered)
+        .controlSize(.regular)
+        .disabled(isDisabled)
+        .accessibilityIdentifier(accessibilityIdentifier)
     }
 
     @ViewBuilder

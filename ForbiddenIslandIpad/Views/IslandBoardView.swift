@@ -69,6 +69,16 @@ private struct TileView: View {
     let highlight: TileSelectionKind?
     let onTap: () -> Void
 
+    private var pawnSize: CGSize {
+        if tileSide < 110 {
+            return CGSize(width: 22, height: 36)
+        } else if tileSide < 128 {
+            return CGSize(width: 24, height: 40)
+        } else {
+            return CGSize(width: 28, height: 46)
+        }
+    }
+
     var body: some View {
         Button(action: onTap) {
             ZStack(alignment: .bottom) {
@@ -180,7 +190,7 @@ private struct TileView: View {
             name: "P\(player.role.rawValue)",
             renderedContentMode: .fit
         )
-        .frame(width: 28, height: 46)
+        .frame(width: pawnSize.width, height: pawnSize.height)
         .accessibilityLabel(player.role.name)
     }
 

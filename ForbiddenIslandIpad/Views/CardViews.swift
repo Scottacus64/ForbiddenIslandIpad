@@ -2,26 +2,21 @@ import SwiftUI
 
 struct PlayerHandsView: View {
     @ObservedObject var viewModel: GameViewModel
+    let isLandscape: Bool
+    let maxHeight: CGFloat
 
     var body: some View {
         GeometryReader { proxy in
-            let landscapeGrid = proxy.size.width >= 700
-
-            if landscapeGrid {
-                LazyVGrid(
-                    columns: [
-                        GridItem(.flexible(), spacing: 12),
-                        GridItem(.flexible(), spacing: 12)
-                    ],
-                    alignment: .leading,
-                    spacing: 12
-                ) {
+            if isLandscape {
+                VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.game.players) { player in
                         PlayerHandView(
                             player: player,
                             locationName: viewModel.game.tileName(at: player.location),
                             isActive: player.id == viewModel.activePlayer?.id,
                             showsMetadata: player.id == viewModel.activePlayer?.id,
+                            showsCards: true,
+                            layoutScale: 0.85,
                             canPlayCard: { cardIndex in
                                 viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
                                     viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
@@ -44,39 +39,76 @@ struct PlayerHandsView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             } else {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 12) {
-                        ForEach(viewModel.game.players) { player in
-                            PlayerHandView(
-                                player: player,
-                                locationName: viewModel.game.tileName(at: player.location),
-                                isActive: player.id == viewModel.activePlayer?.id,
-                                showsMetadata: true,
-                                canPlayCard: { cardIndex in
-                                    viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
-                                        viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
-                                        viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) ||
-                                        viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                                },
-                                onCardTap: { cardIndex in
-                                    if viewModel.canSelectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex) {
-                                        _ = viewModel.selectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex)
-                                    } else if viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex) {
-                                        _ = viewModel.discardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                                    } else if viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) {
-                                        _ = viewModel.giveTreasure(cardIndex: cardIndex)
-                                    } else {
-                                        _ = viewModel.playTreasureCard(playerID: player.id, cardIndex: cardIndex)
-                                    }
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 12),
+                        GridItem(.flexible(), spacing: 12)
+                    ],
+                    alignment: .leading,
+                    spacing: 12
+                ) {
+                    ForEach(viewModel.game.players) { player in
+                        PlayerHandView(
+                            player: player,
+                            locationName: viewModel.game.tileName(at: player.location),
+                            isActive: player.id == viewModel.activePlayer?.id,
+                            showsMetadata: false,
+                            showsCards: false,
+                            layoutScale: 1.0,
+                            canPlayCard: { cardIndex in
+                                viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
+                                    viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
+                                    viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) ||
+                                    viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex)
+                            },
+                            onCardTap: { cardIndex in
+                                if viewModel.canSelectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex) {
+                                    _ = viewModel.selectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex)
+                                } else if viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex) {
+                                    _ = viewModel.discardForHandLimit(playerID: player.id, cardIndex: cardIndex)
+                                } else if viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) {
+                                    _ = viewModel.giveTreasure(cardIndex: cardIndex)
+                                } else {
+                                    _ = viewModel.playTreasureCard(playerID: player.id, cardIndex: cardIndex)
                                 }
-                            )
-                        }
+                            }
+                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(.horizontal, 2)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                if let activePlayer = viewModel.activePlayer {
+                        PlayerHandView(
+                            player: activePlayer,
+                            locationName: viewModel.game.tileName(at: activePlayer.location),
+                            isActive: true,
+                            showsMetadata: true,
+                            showsCards: true,
+                            layoutScale: 1.0,
+                            canPlayCard: { cardIndex in
+                                viewModel.canPlayTreasureCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
+                                    viewModel.canPlayReactionCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
+                                    viewModel.canSelectTreasureToGive(playerID: activePlayer.id, cardIndex: cardIndex) ||
+                                    viewModel.canDiscardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex)
+                        },
+                        onCardTap: { cardIndex in
+                            if viewModel.canSelectHandLimitCardAction(playerID: activePlayer.id, cardIndex: cardIndex) {
+                                _ = viewModel.selectHandLimitCardAction(playerID: activePlayer.id, cardIndex: cardIndex)
+                            } else if viewModel.canDiscardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex) {
+                                _ = viewModel.discardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex)
+                            } else if viewModel.canSelectTreasureToGive(playerID: activePlayer.id, cardIndex: cardIndex) {
+                                _ = viewModel.giveTreasure(cardIndex: cardIndex)
+                            } else {
+                                _ = viewModel.playTreasureCard(playerID: activePlayer.id, cardIndex: cardIndex)
+                            }
+                        }
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 320)
+        .frame(maxWidth: .infinity, maxHeight: maxHeight)
     }
 }
 
@@ -85,14 +117,21 @@ private struct PlayerHandView: View {
     let locationName: String
     let isActive: Bool
     let showsMetadata: Bool
+    let showsCards: Bool
+    let layoutScale: CGFloat
     let canPlayCard: (Int) -> Bool
     let onCardTap: (Int) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        let scaledPadding = max(7, 8 * layoutScale)
+        let iconWidth = showsMetadata ? 30 * layoutScale : 24 * layoutScale
+        let iconHeight = showsMetadata ? 42 * layoutScale : 34 * layoutScale
+        let minBoxHeight: CGFloat = showsMetadata ? 112 : 96
+
+        VStack(alignment: .leading, spacing: showsCards ? 5 : 4) {
             HStack(spacing: 8) {
                 BundleImage(name: "C\(player.role.rawValue)")
-                    .frame(width: showsMetadata ? 34 : 28, height: showsMetadata ? 48 : 40)
+                    .frame(width: iconWidth, height: iconHeight)
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 6) {
                         Text(player.role.name)
@@ -124,26 +163,34 @@ private struct PlayerHandView: View {
                 Spacer(minLength: 0)
             }
 
-            HStack(spacing: 4) {
-                if player.hand.isEmpty {
-                    Text("No treasure cards")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .frame(height: 82)
-                } else {
-                    ForEach(Array(player.hand.enumerated()), id: \.offset) { cardIndex, card in
-                        TreasureCardButton(
-                            card: card,
-                            isPlayable: canPlayCard(cardIndex),
-                            compact: !showsMetadata,
-                            onTap: { onCardTap(cardIndex) },
-                            accessibilityIdentifier: "hand.\(player.id).card.\(cardIndex)"
-                        )
+            if showsCards {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 4) {
+                        if player.hand.isEmpty {
+                            Text("No treasure cards")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .frame(height: 82)
+                        } else {
+                            ForEach(Array(player.hand.enumerated()), id: \.offset) { cardIndex, card in
+                                TreasureCardButton(
+                                    card: card,
+                                    isPlayable: canPlayCard(cardIndex),
+                                    compact: !showsMetadata,
+                                    cardScale: layoutScale,
+                                    onTap: { onCardTap(cardIndex) },
+                                    accessibilityIdentifier: "hand.\(player.id).card.\(cardIndex)"
+                                )
+                            }
+                        }
                     }
+                    .padding(.trailing, 2)
                 }
             }
         }
-        .padding(10)
+        .padding(showsMetadata ? 10 * layoutScale : scaledPadding)
+        .frame(minHeight: minBoxHeight)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
         .overlay {
             RoundedRectangle(cornerRadius: 8)
@@ -156,13 +203,17 @@ private struct TreasureCardButton: View {
     let card: TreasureCard
     let isPlayable: Bool
     let compact: Bool
+    let cardScale: CGFloat
     let onTap: () -> Void
     let accessibilityIdentifier: String
 
     var body: some View {
         Button(action: onTap) {
             TreasureCardImage(card: card)
-                .frame(width: compact ? 46 : 54, height: compact ? 66 : 76)
+                .frame(
+                    width: (compact ? 40 : 54) * cardScale,
+                    height: (compact ? 58 : 76) * cardScale
+                )
                 .overlay(alignment: .topTrailing) {
                     if isPlayable {
                         Image(systemName: "play.fill")
