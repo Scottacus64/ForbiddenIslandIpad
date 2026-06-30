@@ -95,8 +95,8 @@ struct GameStatusPanel: View {
         HStack(alignment: .top, spacing: 12) {
             landscapeBrandColumn
             landscapeStatusColumn
-            landscapeDeckColumn
             landscapePhaseColumn
+            landscapeDeckColumn
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -128,26 +128,25 @@ struct GameStatusPanel: View {
     }
 
     private var landscapeStatusColumn: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .center, spacing: 10) {
             statusSummary
             treasureOverview
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private var landscapeDeckColumn: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            deckSummary
-            DeckDiscardView(viewModel: viewModel)
+        VStack(alignment: .center, spacing: 10) {
+            DeckDiscardView(viewModel: viewModel, landscapeStyle: true)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 
     private var landscapePhaseColumn: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .center, spacing: 10) {
             phaseControls
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 
     private var compactPortraitBody: some View {

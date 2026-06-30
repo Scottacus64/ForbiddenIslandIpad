@@ -260,38 +260,85 @@ struct TreasureCardImage: View {
 
 struct DeckDiscardView: View {
     @ObservedObject var viewModel: GameViewModel
+    var landscapeStyle: Bool = false
     @State private var showsTreasureDiscardTop = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Discards")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            if landscapeStyle {
+                VStack(alignment: .center, spacing: 12) {
+                    HStack(spacing: 14) {
+                        deckSlot(
+                            imageName: "FIC",
+                            count: viewModel.game.treasureDeck.count,
+                            title: "TREASURE DECK",
+                            titleColor: .black
+                        )
 
-            HStack(spacing: 14) {
-                deckSlot
+                        deckSlot(
+                            imageName: "WRBC",
+                            count: viewModel.game.floodDeck.count,
+                            title: "Flood Deck",
+                            titleColor: .black
+                        )
 
-                Button {
-                    guard !viewModel.game.treasureDiscard.isEmpty else { return }
-                    showsTreasureDiscardTop.toggle()
-                } label: {
-                    discardSlot(title: "Treasure") {
-                        if let card = viewModel.treasureDiscardTopCard,
-                           showsTreasureDiscardTop || card == .watersRise {
-                            TreasureCardImage(card: card)
-                        } else {
-                            BundleImage(name: "FIC")
+                        Button {
+                            guard !viewModel.game.treasureDiscard.isEmpty else { return }
+                            showsTreasureDiscardTop.toggle()
+                        } label: {
+                            discardSlot(title: "Discards", titleColor: .black) {
+                                if let card = viewModel.treasureDiscardTopCard,
+                                   showsTreasureDiscardTop || card == .watersRise {
+                                    TreasureCardImage(card: card)
+                                } else {
+                                    BundleImage(name: "FIC")
+                                }
+                            }
                         }
+                        .buttonStyle(.plain)
+                        .disabled(viewModel.game.treasureDiscard.isEmpty)
                     }
                 }
-                .buttonStyle(.plain)
-                .disabled(viewModel.game.treasureDiscard.isEmpty)
+            } else {
+                VStack(alignment: .center, spacing: 12) {
+                    HStack(spacing: 14) {
+                        deckSlot(
+                            imageName: "FIC",
+                            count: viewModel.game.treasureDeck.count,
+                            title: "Deck"
+                        )
 
-                discardSlot(title: "Flood") {
-                    if let flood = viewModel.latestFloodDiscard {
-                        BundleImage(name: "\(flood.rawValue)C")
-                    } else {
-                        BundleImage(name: "WRBC")
+                        deckSlot(
+                            imageName: "WRBC",
+                            count: viewModel.game.floodDeck.count,
+                            title: "Flood Deck"
+                        )
+                    }
+
+                    HStack(spacing: 14) {
+                        Button {
+                            guard !viewModel.game.treasureDiscard.isEmpty else { return }
+                            showsTreasureDiscardTop.toggle()
+                        } label: {
+                            discardSlot(title: "Treasure") {
+                                if let card = viewModel.treasureDiscardTopCard,
+                                   showsTreasureDiscardTop || card == .watersRise {
+                                    TreasureCardImage(card: card)
+                                } else {
+                                    BundleImage(name: "FIC")
+                                }
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(viewModel.game.treasureDiscard.isEmpty)
+
+                        discardSlot(title: "Flood") {
+                            if let flood = viewModel.latestFloodDiscard {
+                                BundleImage(name: "\(flood.rawValue)C")
+                            } else {
+                                BundleImage(name: "WRBC")
+                            }
+                        }
                     }
                 }
             }
@@ -303,14 +350,14 @@ struct DeckDiscardView: View {
         }
     }
 
-    private var deckSlot: some View {
+    private func deckSlot(imageName: String, count: Int, title: String, titleColor: Color = .secondary) -> some View {
         VStack(spacing: 5) {
             ZStack(alignment: .topTrailing) {
-                BundleImage(name: "FIC")
+                BundleImage(name: imageName)
                     .frame(width: 48, height: 68)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
 
-                Text("\(viewModel.game.treasureDeck.count)")
+                Text("\(count)")
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 6)
@@ -318,14 +365,15 @@ struct DeckDiscardView: View {
                     .background(.black.opacity(0.75), in: Capsule())
                     .padding(4)
             }
-            Text("Deck")
+            Text(title)
                 .font(.caption2)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(titleColor)
         }
     }
 
     private func discardSlot<Content: View>(
         title: String,
+        titleColor: Color = .secondary,
         @ViewBuilder content: () -> Content
     ) -> some View {
         VStack(spacing: 5) {
@@ -334,7 +382,7 @@ struct DeckDiscardView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 5))
             Text(title)
                 .font(.caption2)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(titleColor)
         }
     }
 }

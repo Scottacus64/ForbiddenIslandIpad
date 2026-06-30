@@ -261,25 +261,16 @@ private struct WaterLevelTrackView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            let size = proxy.size
-            let clampedLevel = min(max(level, 1), 8)
-            let stepCount = CGFloat(7)
-            let levelIndex = CGFloat(clampedLevel - 1)
-            let indicatorY = size.height * (0.89 - (levelIndex / stepCount) * 0.64)
-            let indicatorWidth = size.width * 0.51
-            let indicatorHeight = size.width * 0.24
-            let indicatorX = (indicatorWidth / 2) + 6
-
-            ZStack {
-                BundleImage(name: "wrCard", renderedContentMode: .fit)
-                BundleImage(name: "wrIndicator", renderedContentMode: .fit)
-                    .frame(width: indicatorWidth, height: indicatorHeight)
-                    .position(x: indicatorX, y: indicatorY)
-            }
-            .frame(width: size.width, height: size.height)
+            BundleImage(name: waterLevelImageName, renderedContentMode: .fit)
+                .frame(width: proxy.size.width, height: proxy.size.height)
         }
         .frame(width: 111, height: 306)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Water level \(level)")
+    }
+
+    private var waterLevelImageName: String {
+        let clampedLevel = min(max(level + 1, 1), 10)
+        return "wr\(clampedLevel)"
     }
 }
