@@ -1,0 +1,304 @@
+{
+  "source": "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameStatusPanel.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Rules",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "New Game",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Rules",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "New Game",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 124
+        }
+      },
+      {
+        "comment": "",
+        "key": "Rules",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "New Game",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 195
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Actions",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 228
+        }
+      },
+      {
+        "comment": "",
+        "key": "Treasures Collected",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 236
+        }
+      },
+      {
+        "comment": "",
+        "key": "Treasure Deck",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 252
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Flood",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 253
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Flood Discard",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 254
+        }
+      },
+      {
+        "comment": "",
+        "key": "Players",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 264
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 269
+        }
+      },
+      {
+        "comment": "",
+        "key": "Difficulty",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 280
+        }
+      },
+      {
+        "comment": "",
+        "key": "Flood Tile (%lld)",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 310
+        }
+      },
+      {
+        "comment": "",
+        "key": "Engineer bonus shore up available.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 396
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose player to move",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 413
+        }
+      },
+      {
+        "comment": "",
+        "key": "Move %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 431
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld step%@ remaining",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 434
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 440
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose receiver",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 452
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose passengers",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 488
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose Destination",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 509
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld of 2 drawn",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 531
+        }
+      },
+      {
+        "comment": "",
+        "key": "Draw Treasure Card",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 527
+        }
+      },
+      {
+        "comment": "",
+        "key": "Waters Rise",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 538
+        }
+      },
+      {
+        "comment": "",
+        "key": "Continue",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 544
+        }
+      },
+      {
+        "comment": "",
+        "key": "Discard to 5 cards",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 552
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tap a sandbag or helicopter card to choose whether to play it or discard it.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 583
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose an action for %@'s card.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 560
+        }
+      },
+      {
+        "comment": "",
+        "key": "Play",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 566
+        }
+      },
+      {
+        "comment": "",
+        "key": "Discard",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 572
+        }
+      },
+      {
+        "comment": "",
+        "key": "Flood Tile (%lld)",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 605
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start a new game from the panel controls.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 616
+        }
+      },
+      {
+        "comment": "",
+        "key": "Back",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 655
+        }
+      },
+      {
+        "comment": "",
+        "key": "Log",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 691
+        }
+      },
+      {
+        "comment": "",
+        "key": "No events yet.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 696
+        }
+      }
+    ]
+  },
+  "version": 1
+}

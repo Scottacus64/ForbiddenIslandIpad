@@ -1,0 +1,16 @@
+{
+  "source": "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Water level %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 316
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,66 @@
+{
+  "" : {
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.dia",
+    "emit-module-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-emit-module.dia",
+    "pch" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.swiftdeps"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/ContentView.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/ForbiddenIslandIpadApp.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpadApp.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/ForbiddenIslandRules.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandRules.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/GameViewModel.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameViewModel.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/BundleImage.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/BundleImage.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/CardViews.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/CardViews.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameStatusPanel.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameStatusPanel.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/GameView.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GameView.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/IslandBoardView.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/IslandBoardView.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/RulesReferenceView.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/RulesReferenceView.o"
+  },
+  "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

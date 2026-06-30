@@ -59,8 +59,8 @@ struct GameView: View {
             GameStatusPanel(
                 viewModel: viewModel,
                 onShowRules: showRulesReference,
-                isCompactPortrait: false,
-                isLandscapeLayout: true,
+                isCompactPortrait: true,
+                isLandscapeLayout: false,
                 layoutScale: metrics.layoutScale
             )
             .frame(height: metrics.bottomBandHeight, alignment: .topLeading)
@@ -70,8 +70,8 @@ struct GameView: View {
 
     @ViewBuilder
     private func portraitLayout(metrics: GameLayoutMetrics, size: CGSize) -> some View {
-        ScrollView(.vertical, showsIndicators: true) {
-            VStack(spacing: 16) {
+        VStack(spacing: 12) {
+            HStack(alignment: .center, spacing: 12) {
                 IslandBoardView(
                     game: viewModel.game,
                     highlightedLocations: Set(viewModel.selectableTileLocations),
@@ -80,26 +80,38 @@ struct GameView: View {
                     boardSide: metrics.boardSide
                 )
                 .frame(width: metrics.boardSide, height: metrics.boardSide)
-                .frame(maxWidth: .infinity)
+                .frame(alignment: .topLeading)
 
-                PlayerHandsView(
-                    viewModel: viewModel,
-                    isLandscape: false,
-                    maxHeight: .infinity,
-                    layoutScale: metrics.layoutScale
-                )
-                    .frame(maxWidth: .infinity)
+                Spacer(minLength: 0)
 
-                GameStatusPanel(
-                    viewModel: viewModel,
-                    onShowRules: showRulesReference,
-                    isCompactPortrait: true,
-                    layoutScale: metrics.layoutScale
-                )
-                .frame(maxWidth: .infinity)
+                WaterLevelTrackView(level: viewModel.game.waterLevel, layoutScale: metrics.layoutScale)
+                    .frame(width: metrics.waterLevelStripWidth, height: metrics.waterLevelStripHeight, alignment: .center)
             }
-            .padding(metrics.boardPadding)
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal, metrics.topRowInset)
+            .frame(maxWidth: .infinity, alignment: .top)
+
+            PlayerHandsView(
+                viewModel: viewModel,
+                isLandscape: false,
+                maxHeight: metrics.playerColumnHeight,
+                layoutScale: metrics.layoutScale
+            )
+            .padding(.horizontal, metrics.boardPadding)
+            .frame(maxWidth: .infinity, maxHeight: metrics.playerColumnHeight, alignment: .top)
+
+            Spacer(minLength: 0)
+        }
+        .padding(.top, metrics.boardPadding)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            GameStatusPanel(
+                viewModel: viewModel,
+                onShowRules: showRulesReference,
+                isCompactPortrait: true,
+                isLandscapeLayout: false,
+                layoutScale: metrics.layoutScale
+            )
+            .frame(height: metrics.bottomBandHeight, alignment: .topLeading)
         }
     }
 
@@ -152,23 +164,39 @@ struct GameView: View {
                 rightPaneWidth: 0
             )
         } else {
-            let usableWidth = size.width - (boardPadding * 2)
+            let waterLevelStripWidth: CGFloat = 111 * layoutScale
+            let waterLevelStripHeight: CGFloat = 306 * layoutScale
+            let horizontalGutter: CGFloat = 14 * layoutScale
+            let availableWidth = size.width - (boardPadding * 2) - waterLevelStripWidth - horizontalGutter
+            let regularPortrait = size.height >= 1300 || size.width >= 900
+            let playerColumnHeight = regularPortrait
+                ? max(190 * layoutScale, min(size.height * 0.18, 260 * layoutScale))
+                : max(160 * layoutScale, min(size.height * 0.16, 220 * layoutScale))
+            let bottomBandHeight = regularPortrait
+                ? max(210 * layoutScale, min(size.height * 0.22, 290 * layoutScale))
+                : max(190 * layoutScale, min(size.height * 0.20, 240 * layoutScale))
+            let availableHeightForBoard = size.height
+                - (boardPadding * 2)
+                - playerColumnHeight
+                - bottomBandHeight
+                - (24 * layoutScale)
             let boardSide = max(
-                280 * layoutScale,
-                min(usableWidth, size.height * 0.58)
+                (regularPortrait ? 300 : 290) * layoutScale,
+                min(availableWidth, availableHeightForBoard) * (regularPortrait ? 0.94 : 0.9)
             )
+            let topRowInset = max(boardPadding, (size.width - (boardSide + waterLevelStripWidth + horizontalGutter)) / 2)
 
             return GameLayoutMetrics(
                 layoutScale: layoutScale,
                 leftPaneWidth: size.width,
                 statusWidth: size.width,
-                waterLevelStripWidth: 0,
-                waterLevelStripHeight: 0,
+                waterLevelStripWidth: waterLevelStripWidth,
+                waterLevelStripHeight: waterLevelStripHeight,
                 playerColumnWidth: 0,
-                playerColumnHeight: 0,
-                bottomBandHeight: 0,
+                playerColumnHeight: playerColumnHeight,
+                bottomBandHeight: bottomBandHeight,
                 boardPadding: boardPadding,
-                topRowInset: boardPadding,
+                topRowInset: topRowInset,
                 boardSide: boardSide,
                 handStripHeight: 0,
                 rightPaneWidth: 0

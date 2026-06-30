@@ -1,0 +1,16 @@
+{
+  "source": "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Views/IslandBoardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%@, %@, location %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 112
+        }
+      }
+    ]
+  },
+  "version": 1
+}

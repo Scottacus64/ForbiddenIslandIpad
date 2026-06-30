@@ -7,35 +7,11 @@ struct PlayerHandsView: View {
     let layoutScale: CGFloat
 
     var body: some View {
-        GeometryReader { proxy in
+        Group {
             if isLandscape {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.game.players) { player in
-                        PlayerHandView(
-                            player: player,
-                            locationName: viewModel.game.tileName(at: player.location),
-                            isActive: player.id == viewModel.activePlayer?.id,
-                            showsMetadata: player.id == viewModel.activePlayer?.id,
-                            showsCards: true,
-                            layoutScale: 0.85 * layoutScale,
-                            canPlayCard: { cardIndex in
-                                viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                            },
-                            onCardTap: { cardIndex in
-                                if viewModel.canSelectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.selectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex)
-                                } else if viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.discardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                                } else if viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.giveTreasure(cardIndex: cardIndex)
-                                } else {
-                                    _ = viewModel.playTreasureCard(playerID: player.id, cardIndex: cardIndex)
-                                }
-                            }
-                        )
+                        playerHand(player: player, showsMetadata: player.id == viewModel.activePlayer?.id, cardScale: 0.85 * layoutScale)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -49,67 +25,41 @@ struct PlayerHandsView: View {
                     spacing: 12
                 ) {
                     ForEach(viewModel.game.players) { player in
-                        PlayerHandView(
-                            player: player,
-                            locationName: viewModel.game.tileName(at: player.location),
-                            isActive: player.id == viewModel.activePlayer?.id,
-                            showsMetadata: false,
-                            showsCards: false,
-                            layoutScale: layoutScale,
-                            canPlayCard: { cardIndex in
-                                viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) ||
-                                    viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                            },
-                            onCardTap: { cardIndex in
-                                if viewModel.canSelectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.selectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex)
-                                } else if viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.discardForHandLimit(playerID: player.id, cardIndex: cardIndex)
-                                } else if viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) {
-                                    _ = viewModel.giveTreasure(cardIndex: cardIndex)
-                                } else {
-                                    _ = viewModel.playTreasureCard(playerID: player.id, cardIndex: cardIndex)
-                                }
-                            }
-                        )
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        playerHand(player: player, showsMetadata: player.id == viewModel.activePlayer?.id, cardScale: 0.92 * layoutScale)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-
-                if let activePlayer = viewModel.activePlayer {
-                        PlayerHandView(
-                            player: activePlayer,
-                            locationName: viewModel.game.tileName(at: activePlayer.location),
-                            isActive: true,
-                            showsMetadata: true,
-                            showsCards: true,
-                            layoutScale: layoutScale,
-                            canPlayCard: { cardIndex in
-                                viewModel.canPlayTreasureCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
-                                    viewModel.canPlayReactionCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
-                                    viewModel.canSelectTreasureToGive(playerID: activePlayer.id, cardIndex: cardIndex) ||
-                                    viewModel.canDiscardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex)
-                        },
-                        onCardTap: { cardIndex in
-                            if viewModel.canSelectHandLimitCardAction(playerID: activePlayer.id, cardIndex: cardIndex) {
-                                _ = viewModel.selectHandLimitCardAction(playerID: activePlayer.id, cardIndex: cardIndex)
-                            } else if viewModel.canDiscardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex) {
-                                _ = viewModel.discardForHandLimit(playerID: activePlayer.id, cardIndex: cardIndex)
-                            } else if viewModel.canSelectTreasureToGive(playerID: activePlayer.id, cardIndex: cardIndex) {
-                                _ = viewModel.giveTreasure(cardIndex: cardIndex)
-                            } else {
-                                _ = viewModel.playTreasureCard(playerID: activePlayer.id, cardIndex: cardIndex)
-                            }
-                        }
-                    )
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: maxHeight)
+        .frame(maxWidth: .infinity, maxHeight: maxHeight, alignment: .topLeading)
+    }
+
+    private func playerHand(player: Player, showsMetadata: Bool, cardScale: CGFloat) -> some View {
+        PlayerHandView(
+            player: player,
+            locationName: viewModel.game.tileName(at: player.location),
+            isActive: player.id == viewModel.activePlayer?.id,
+            showsMetadata: showsMetadata,
+            showsCards: true,
+            layoutScale: cardScale,
+            canPlayCard: { cardIndex in
+                viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
+                    viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
+                    viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) ||
+                    viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex)
+            },
+            onCardTap: { cardIndex in
+                if viewModel.canSelectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex) {
+                    _ = viewModel.selectHandLimitCardAction(playerID: player.id, cardIndex: cardIndex)
+                } else if viewModel.canDiscardForHandLimit(playerID: player.id, cardIndex: cardIndex) {
+                    _ = viewModel.discardForHandLimit(playerID: player.id, cardIndex: cardIndex)
+                } else if viewModel.canSelectTreasureToGive(playerID: player.id, cardIndex: cardIndex) {
+                    _ = viewModel.giveTreasure(cardIndex: cardIndex)
+                } else {
+                    _ = viewModel.playTreasureCard(playerID: player.id, cardIndex: cardIndex)
+                }
+            }
+        )
     }
 }
 

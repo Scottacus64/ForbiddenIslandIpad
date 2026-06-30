@@ -153,52 +153,71 @@ struct GameStatusPanel: View {
     }
 
     private var compactPortraitBody: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        let leftWidth = 240 * layoutScale
+        let centerWidth = 300 * layoutScale
+        let rightWidth = 238 * layoutScale
+        return VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .top, spacing: 14) {
+                portraitLeftColumn
+                    .frame(width: leftWidth, alignment: .topLeading)
+
+                portraitCenterColumn
+                    .frame(width: centerWidth, alignment: .topLeading)
+
+                portraitRightColumn
+                    .frame(width: rightWidth, alignment: .topLeading)
+            }
+        }
+        .padding(14 * layoutScale)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .background(.regularMaterial)
+    }
+
+    private var portraitLeftColumn: some View {
+        VStack(alignment: .center, spacing: 14) {
+            BundleImage(name: "fiLogo")
+                .frame(width: 120 * layoutScale, height: 76 * layoutScale, alignment: .center)
+
             HStack(spacing: 10) {
                 Button {
                     onShowRules()
                 } label: {
                     Label("Rules", systemImage: "book.fill")
+                        .font(.caption.weight(.medium))
                 }
                 .buttonStyle(.bordered)
+                .controlSize(.small)
                 .accessibilityIdentifier("rules.button")
 
                 Button {
                     viewModel.resetGame()
                 } label: {
                     Label("New Game", systemImage: "arrow.counterclockwise")
+                        .font(.caption.weight(.medium))
                 }
                 .buttonStyle(.bordered)
+                .controlSize(.small)
                 .accessibilityIdentifier("newGame.button")
             }
 
-            statusSummary
-
-            phaseControls
-
-            DisclosureGroup(isExpanded: $showsDetails) {
-                VStack(alignment: .leading, spacing: 12) {
-                    treasureOverview
-
-                    Divider()
-
-                    deckSummary
-
-                    DeckDiscardView(viewModel: viewModel, layoutScale: layoutScale)
-
-                    Divider()
-
-                    eventLogSection
-                }
-                .padding(.top, 8)
-            } label: {
-                Label("More", systemImage: "chevron.down")
-                    .font(.headline)
-            }
+            DeckDiscardView(viewModel: viewModel, landscapeStyle: true, layoutScale: layoutScale)
         }
-        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private var portraitCenterColumn: some View {
+        VStack(alignment: .center, spacing: 10) {
+            phaseControls
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private var portraitRightColumn: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            statusSummary
+            treasureOverview
+        }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.regularMaterial)
     }
 
     private var statusSummary: some View {
@@ -270,10 +289,17 @@ struct GameStatusPanel: View {
                     spacing: 8
                 ) {
                     ForEach(difficulties, id: \.level) { difficulty in
-                        Button(difficulty.name) {
+                        Button {
                             _ = viewModel.chooseDifficulty(waterLevel: difficulty.level)
+                        } label: {
+                            Text(difficulty.name)
+                                .font(.caption.weight(.medium))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.75)
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
+                        .controlSize(.small)
                         .accessibilityIdentifier("difficulty.\(difficulty.level)")
                     }
                 }
@@ -647,14 +673,14 @@ struct GameStatusPanel: View {
     ) -> some View {
         Button(action: action) {
             Text(title)
-                .font(.subheadline)
+                .font(.caption.weight(.medium))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(minHeight: 42, alignment: .leading)
+                .frame(minHeight: 36, alignment: .leading)
                 .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(0.72)
         }
         .buttonStyle(.bordered)
-        .controlSize(.regular)
+        .controlSize(.small)
         .disabled(isDisabled)
         .accessibilityIdentifier(accessibilityIdentifier)
     }

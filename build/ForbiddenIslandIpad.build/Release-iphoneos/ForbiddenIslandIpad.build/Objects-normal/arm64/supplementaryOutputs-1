@@ -1,0 +1,12 @@
+{
+  "/Users/scottmiller/ForbiddenIslandIpad/ForbiddenIslandIpad/Rules/ForbiddenIslandRules.swift" : {
+    "abi-baseline-json" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad.abi.json",
+    "const-values" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.swiftconstvalues",
+    "dependencies" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.d",
+    "diagnostics" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-primary.dia",
+    "objc-header" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad-Swift.h",
+    "swiftdoc" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad.swiftdoc",
+    "swiftmodule" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad.swiftmodule",
+    "swiftsourceinfo" : "/Users/scottmiller/ForbiddenIslandIpad/build/ForbiddenIslandIpad.build/Release-iphoneos/ForbiddenIslandIpad.build/Objects-normal/arm64/ForbiddenIslandIpad.swiftsourceinfo"
+  }
+}
