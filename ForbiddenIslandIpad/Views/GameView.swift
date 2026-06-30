@@ -11,7 +11,8 @@ struct GameView: View {
     var body: some View {
         GeometryReader { proxy in
             let landscape = proxy.size.width > proxy.size.height
-            let metrics = layoutMetrics(for: proxy.size, landscape: landscape)
+            let layoutScale = layoutScale(for: proxy.size)
+            let metrics = layoutMetrics(for: proxy.size, landscape: landscape, layoutScale: layoutScale)
 
             Group {
                 if landscape {
@@ -44,11 +45,12 @@ struct GameView: View {
                 PlayerHandsView(
                     viewModel: viewModel,
                     isLandscape: true,
-                    maxHeight: metrics.playerColumnHeight
+                    maxHeight: metrics.playerColumnHeight,
+                    layoutScale: metrics.layoutScale
                 )
                 .frame(width: metrics.playerColumnWidth, alignment: .topLeading)
 
-                WaterLevelTrackView(level: viewModel.game.waterLevel)
+                WaterLevelTrackView(level: viewModel.game.waterLevel, layoutScale: metrics.layoutScale)
                     .frame(width: metrics.waterLevelStripWidth, height: metrics.waterLevelStripHeight, alignment: .center)
             }
             .padding(.horizontal, metrics.topRowInset)
@@ -58,7 +60,8 @@ struct GameView: View {
                 viewModel: viewModel,
                 onShowRules: showRulesReference,
                 isCompactPortrait: false,
-                isLandscapeLayout: true
+                isLandscapeLayout: true,
+                layoutScale: metrics.layoutScale
             )
             .frame(height: metrics.bottomBandHeight, alignment: .topLeading)
         }
@@ -79,13 +82,19 @@ struct GameView: View {
                 .frame(width: metrics.boardSide, height: metrics.boardSide)
                 .frame(maxWidth: .infinity)
 
-                PlayerHandsView(viewModel: viewModel, isLandscape: false, maxHeight: .infinity)
+                PlayerHandsView(
+                    viewModel: viewModel,
+                    isLandscape: false,
+                    maxHeight: .infinity,
+                    layoutScale: metrics.layoutScale
+                )
                     .frame(maxWidth: .infinity)
 
                 GameStatusPanel(
                     viewModel: viewModel,
                     onShowRules: showRulesReference,
-                    isCompactPortrait: true
+                    isCompactPortrait: true,
+                    layoutScale: metrics.layoutScale
                 )
                 .frame(maxWidth: .infinity)
             }
@@ -94,19 +103,25 @@ struct GameView: View {
         }
     }
 
-    private func layoutMetrics(for size: CGSize, landscape: Bool) -> GameLayoutMetrics {
-        let boardPadding: CGFloat = min(size.width, size.height) > 700 ? 28 : 14
+    private func layoutScale(for size: CGSize) -> CGFloat {
+        let shortEdge = min(size.width, size.height)
+        return min(max(shortEdge / 834.0, 1.0), 1.25)
+    }
+
+    private func layoutMetrics(for size: CGSize, landscape: Bool, layoutScale: CGFloat) -> GameLayoutMetrics {
+        let baseBoardPadding: CGFloat = min(size.width, size.height) > 700 ? 28 : 14
+        let boardPadding = baseBoardPadding * layoutScale
 
         if landscape {
             let compactLandscape = size.width < 1300
-            let layoutPadding = compactLandscape ? 20 : boardPadding
-            let waterLevelStripWidth: CGFloat = compactLandscape ? 111 : 128
-            let waterLevelStripHeight: CGFloat = compactLandscape ? 306 : 320
+            let layoutPadding: CGFloat = (compactLandscape ? 20 : baseBoardPadding) * layoutScale
+            let waterLevelStripWidth: CGFloat = (compactLandscape ? 111 : 128) * layoutScale
+            let waterLevelStripHeight: CGFloat = (compactLandscape ? 306 : 320) * layoutScale
             let playerColumnWidth: CGFloat = compactLandscape
-                ? min(max(size.width * 0.28, 260), 360)
-                : min(max(size.width * 0.26, 280), 380)
-            let columnSpacing: CGFloat = compactLandscape ? 10 : 12
-            let bottomBandHeight: CGFloat = compactLandscape ? 190 : 220
+                ? min(max(size.width * 0.28, 260 * layoutScale), 360 * layoutScale)
+                : min(max(size.width * 0.26, 280 * layoutScale), 380 * layoutScale)
+            let columnSpacing: CGFloat = (compactLandscape ? 10 : 12) * layoutScale
+            let bottomBandHeight: CGFloat = (compactLandscape ? 190 : 220) * layoutScale
             let availableWidth = size.width
                 - (layoutPadding * 2)
                 - playerColumnWidth
@@ -115,13 +130,14 @@ struct GameView: View {
             let availableHeight = size.height
                 - bottomBandHeight
                 - (layoutPadding * 2)
-                - 12
-            let boardSide = max(240, min(availableWidth, availableHeight))
-            let playerColumnHeight = max(320, availableHeight)
+                - (12 * layoutScale)
+            let boardSide = max(240 * layoutScale, min(availableWidth, availableHeight))
+            let playerColumnHeight = max(320 * layoutScale, availableHeight)
             let topRowContentWidth = boardSide + playerColumnWidth + waterLevelStripWidth + (columnSpacing * 2)
             let topRowInset = max(layoutPadding, (size.width - topRowContentWidth) / 2)
 
             return GameLayoutMetrics(
+                layoutScale: layoutScale,
                 leftPaneWidth: size.width,
                 statusWidth: 0,
                 waterLevelStripWidth: waterLevelStripWidth,
@@ -138,11 +154,12 @@ struct GameView: View {
         } else {
             let usableWidth = size.width - (boardPadding * 2)
             let boardSide = max(
-                280,
+                280 * layoutScale,
                 min(usableWidth, size.height * 0.58)
             )
 
             return GameLayoutMetrics(
+                layoutScale: layoutScale,
                 leftPaneWidth: size.width,
                 statusWidth: size.width,
                 waterLevelStripWidth: 0,
@@ -242,6 +259,7 @@ struct GameView: View {
 }
 
 private struct GameLayoutMetrics {
+    let layoutScale: CGFloat
     let leftPaneWidth: CGFloat
     let statusWidth: CGFloat
     let waterLevelStripWidth: CGFloat
@@ -258,13 +276,14 @@ private struct GameLayoutMetrics {
 
 private struct WaterLevelTrackView: View {
     let level: Int
+    let layoutScale: CGFloat
 
     var body: some View {
         GeometryReader { proxy in
             BundleImage(name: waterLevelImageName, renderedContentMode: .fit)
                 .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        .frame(width: 111, height: 306)
+        .frame(width: 111 * layoutScale, height: 306 * layoutScale)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Water level \(level)")
     }

@@ -5,18 +5,21 @@ struct GameStatusPanel: View {
     let onShowRules: () -> Void
     let isCompactPortrait: Bool
     let isLandscapeLayout: Bool
+    let layoutScale: CGFloat
     @State private var showsDetails = false
 
     init(
         viewModel: GameViewModel,
         onShowRules: @escaping () -> Void,
         isCompactPortrait: Bool = false,
-        isLandscapeLayout: Bool = false
+        isLandscapeLayout: Bool = false,
+        layoutScale: CGFloat = 1.0
     ) {
         self._viewModel = ObservedObject(wrappedValue: viewModel)
         self.onShowRules = onShowRules
         self.isCompactPortrait = isCompactPortrait
         self.isLandscapeLayout = isLandscapeLayout
+        self.layoutScale = layoutScale
     }
 
     var body: some View {
@@ -75,7 +78,7 @@ struct GameStatusPanel: View {
 
             deckSummary
 
-            DeckDiscardView(viewModel: viewModel)
+            DeckDiscardView(viewModel: viewModel, layoutScale: layoutScale)
 
             Divider()
 
@@ -137,7 +140,7 @@ struct GameStatusPanel: View {
 
     private var landscapeDeckColumn: some View {
         VStack(alignment: .center, spacing: 10) {
-            DeckDiscardView(viewModel: viewModel, landscapeStyle: true)
+            DeckDiscardView(viewModel: viewModel, landscapeStyle: true, layoutScale: layoutScale)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
@@ -181,7 +184,7 @@ struct GameStatusPanel: View {
 
                     deckSummary
 
-                    DeckDiscardView(viewModel: viewModel)
+                    DeckDiscardView(viewModel: viewModel, layoutScale: layoutScale)
 
                     Divider()
 

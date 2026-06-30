@@ -4,6 +4,7 @@ struct PlayerHandsView: View {
     @ObservedObject var viewModel: GameViewModel
     let isLandscape: Bool
     let maxHeight: CGFloat
+    let layoutScale: CGFloat
 
     var body: some View {
         GeometryReader { proxy in
@@ -16,7 +17,7 @@ struct PlayerHandsView: View {
                             isActive: player.id == viewModel.activePlayer?.id,
                             showsMetadata: player.id == viewModel.activePlayer?.id,
                             showsCards: true,
-                            layoutScale: 0.85,
+                            layoutScale: 0.85 * layoutScale,
                             canPlayCard: { cardIndex in
                                 viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
                                     viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
@@ -54,7 +55,7 @@ struct PlayerHandsView: View {
                             isActive: player.id == viewModel.activePlayer?.id,
                             showsMetadata: false,
                             showsCards: false,
-                            layoutScale: 1.0,
+                            layoutScale: layoutScale,
                             canPlayCard: { cardIndex in
                                 viewModel.canPlayTreasureCard(playerID: player.id, cardIndex: cardIndex) ||
                                     viewModel.canPlayReactionCard(playerID: player.id, cardIndex: cardIndex) ||
@@ -85,7 +86,7 @@ struct PlayerHandsView: View {
                             isActive: true,
                             showsMetadata: true,
                             showsCards: true,
-                            layoutScale: 1.0,
+                            layoutScale: layoutScale,
                             canPlayCard: { cardIndex in
                                 viewModel.canPlayTreasureCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
                                     viewModel.canPlayReactionCard(playerID: activePlayer.id, cardIndex: cardIndex) ||
@@ -261,6 +262,7 @@ struct TreasureCardImage: View {
 struct DeckDiscardView: View {
     @ObservedObject var viewModel: GameViewModel
     var landscapeStyle: Bool = false
+    var layoutScale: CGFloat = 1.0
     @State private var showsTreasureDiscardTop = false
 
     var body: some View {
@@ -272,21 +274,23 @@ struct DeckDiscardView: View {
                             imageName: "FIC",
                             count: viewModel.game.treasureDeck.count,
                             title: "TREASURE DECK",
-                            titleColor: .black
+                            titleColor: .black,
+                            layoutScale: layoutScale
                         )
 
                         deckSlot(
                             imageName: "WRBC",
                             count: viewModel.game.floodDeck.count,
                             title: "Flood Deck",
-                            titleColor: .black
+                            titleColor: .black,
+                            layoutScale: layoutScale
                         )
 
                         Button {
                             guard !viewModel.game.treasureDiscard.isEmpty else { return }
                             showsTreasureDiscardTop.toggle()
                         } label: {
-                            discardSlot(title: "Discards", titleColor: .black) {
+                            discardSlot(title: "Discards", layoutScale: layoutScale, titleColor: .black) {
                                 if let card = viewModel.treasureDiscardTopCard,
                                    showsTreasureDiscardTop || card == .watersRise {
                                     TreasureCardImage(card: card)
@@ -305,13 +309,15 @@ struct DeckDiscardView: View {
                         deckSlot(
                             imageName: "FIC",
                             count: viewModel.game.treasureDeck.count,
-                            title: "Deck"
+                            title: "Deck",
+                            layoutScale: layoutScale
                         )
 
                         deckSlot(
                             imageName: "WRBC",
                             count: viewModel.game.floodDeck.count,
-                            title: "Flood Deck"
+                            title: "Flood Deck",
+                            layoutScale: layoutScale
                         )
                     }
 
@@ -320,7 +326,7 @@ struct DeckDiscardView: View {
                             guard !viewModel.game.treasureDiscard.isEmpty else { return }
                             showsTreasureDiscardTop.toggle()
                         } label: {
-                            discardSlot(title: "Treasure") {
+                            discardSlot(title: "Treasure", layoutScale: layoutScale) {
                                 if let card = viewModel.treasureDiscardTopCard,
                                    showsTreasureDiscardTop || card == .watersRise {
                                     TreasureCardImage(card: card)
@@ -332,7 +338,7 @@ struct DeckDiscardView: View {
                         .buttonStyle(.plain)
                         .disabled(viewModel.game.treasureDiscard.isEmpty)
 
-                        discardSlot(title: "Flood") {
+                        discardSlot(title: "Flood", layoutScale: layoutScale) {
                             if let flood = viewModel.latestFloodDiscard {
                                 BundleImage(name: "\(flood.rawValue)C")
                             } else {
@@ -350,11 +356,17 @@ struct DeckDiscardView: View {
         }
     }
 
-    private func deckSlot(imageName: String, count: Int, title: String, titleColor: Color = .secondary) -> some View {
+    private func deckSlot(
+        imageName: String,
+        count: Int,
+        title: String,
+        titleColor: Color = .secondary,
+        layoutScale: CGFloat = 1.0
+    ) -> some View {
         VStack(spacing: 5) {
             ZStack(alignment: .topTrailing) {
                 BundleImage(name: imageName)
-                    .frame(width: 48, height: 68)
+                    .frame(width: 48 * layoutScale, height: 68 * layoutScale)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
 
                 Text("\(count)")
@@ -373,12 +385,13 @@ struct DeckDiscardView: View {
 
     private func discardSlot<Content: View>(
         title: String,
+        layoutScale: CGFloat = 1.0,
         titleColor: Color = .secondary,
         @ViewBuilder content: () -> Content
     ) -> some View {
         VStack(spacing: 5) {
             content()
-                .frame(width: 48, height: 68)
+                .frame(width: 48 * layoutScale, height: 68 * layoutScale)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
             Text(title)
                 .font(.caption2)
